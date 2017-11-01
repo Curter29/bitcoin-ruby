@@ -19,8 +19,9 @@ def get_tx(hash)
   if $use_coinbase_bbe && !$testnet
     url = "https://coinbase.com/network/tx/%s.json" % [hash]
   else
-    url = "http://blockexplorer.com/%srawtx/%s" % [$testnet ? 'testnet/' : '',  hash]
+    url = "https://%sblockexplorer.com/api/tx/%s" % [$testnet ? 'testnet.' : '',  hash]
   end
+
   json = open(url).read
   Bitcoin::Protocol::Tx.from_json(json)
 rescue

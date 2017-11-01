@@ -10,14 +10,15 @@ describe 'Tx' do
     fixtures_file('rawtx-01.bin'),
     fixtures_file('rawtx-02.bin'),
     fixtures_file('rawtx-03.bin'),
-    fixtures_file('rawtx-p2wpkh.bin'),
+    fixtures_file('rawtx-p2wpkh.bin')
   ]
 
   @json = [
     fixtures_file('rawtx-01.json'),
     fixtures_file('rawtx-02.json'),
     fixtures_file('rawtx-03.json'),
-    fixtures_file('rawtx-p2wpkh.json')
+    fixtures_file('rawtx-p2wpkh.json'),
+    fixtures_file('rawtx-06-blockexplorer.json')
   ]
 
 

@@ -50,6 +50,9 @@ task :bacon do
       out = sout.read.strip
       err = serr.read.strip
 
+      # fix invalid byte sequence in UTF-8 on mac
+      out = out.force_encoding('ISO-8859-1').encode('UTF-8')
+
       # this is conventional, see spec/innate/state/fiber.rb for usage
       if out =~ /^Bacon::Error: (needed .*)/
         puts(yellow % ("%6s %s" % ['', $1]))

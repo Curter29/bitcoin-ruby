@@ -423,10 +423,10 @@ module Bitcoin
       # parse ruby hash (see also #to_hash)
       def self.from_hash(h, do_raise=true)
         tx = new(nil)
-        tx.ver, tx.lock_time = (h['ver'] || h['version']), h['lock_time']
-        ins  = h['in']  || h['inputs']
-        outs = h['out'] || h['outputs']
-        ins .each{|input|
+        tx.ver, tx.lock_time = (h['ver'] || h['version']), (h['lock_time'] || h['locktime'])
+        ins  = h['in']  || h['inputs']  || h['vin']
+        outs = h['out'] || h['outputs'] || h['vout']
+        ins.each{|input|
           tx.add_in(TxIn.from_hash(input))
         }
         outs.each{|output|  tx.add_out TxOut.from_hash(output) }
