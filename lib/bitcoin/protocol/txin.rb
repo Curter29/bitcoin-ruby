@@ -102,7 +102,7 @@ module Bitcoin
         if input['coinbase']
           txin.script_sig = [ input['coinbase'] ].pack("H*")
         else
-          txin.script_sig = Script.binary_from_string((input['scriptSig'].is_a?(Hash) ? input['scriptSig']['hex'] : input['scriptSig']) || input['script'])
+          txin.script_sig = Script.binary_from_string((input['scriptSig'].is_a?(Hash) ? input['scriptSig']['asm'] : input['scriptSig']) || input['script'])
         end
         if input['witness']
           input['witness'].each {|w| txin.script_witness.stack << w.htb}

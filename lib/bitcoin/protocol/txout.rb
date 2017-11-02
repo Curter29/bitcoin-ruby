@@ -67,7 +67,7 @@ module Bitcoin
 
       def self.from_hash(output)
         amount = output['value'] ? output['value'].gsub('.','').to_i : output['amount']
-        script = Script.binary_from_string((output['scriptPubKey'].is_a?(Hash) ? output['scriptPubKey']['hex'] : output['scriptPubKey']) || output['script'])
+        script = Script.binary_from_string((output['scriptPubKey'].is_a?(Hash) ? output['scriptPubKey']['asm'] : output['scriptPubKey']) || output['script'])
         new(amount, script)
       end
 
