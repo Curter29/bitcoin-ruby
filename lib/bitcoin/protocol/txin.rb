@@ -97,7 +97,7 @@ module Bitcoin
 
       def self.from_hash(input)
         previous_hash         = input['previous_transaction_hash'] || input['txid'] || input['prev_out']['hash']
-        previous_output_index = input['output_index'] || input['n'] || input['prev_out']['n']
+        previous_output_index = input['output_index'] || input['vout'] || input['prev_out']['n']
         txin = TxIn.new([ previous_hash ].pack('H*').reverse, previous_output_index)
         if input['coinbase']
           txin.script_sig = [ input['coinbase'] ].pack("H*")
